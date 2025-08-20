@@ -5,8 +5,8 @@ let quotes = [
   { text: "Code is like humor. When you have to explain it, it’s bad.", category: "Programming" }
 ];
 
-// Function to display a random quote
-function displayRandomQuote() {
+// Function to show a random quote
+function showRandomQuote() {
   const quoteDisplay = document.getElementById("quoteDisplay");
 
   let randomIndex = Math.floor(Math.random() * quotes.length);
@@ -14,6 +14,33 @@ function displayRandomQuote() {
 
   // update DOM
   quoteDisplay.innerHTML = `"${randomQuote.text}" <br><small>- ${randomQuote.category}</small>`;
+}
+
+// Function to create the Add Quote form dynamically
+function createAddQuoteForm() {
+  const formContainer = document.getElementById("formContainer");
+
+  // Create input for text
+  let textInput = document.createElement("input");
+  textInput.id = "newQuoteText";
+  textInput.type = "text";
+  textInput.placeholder = "Enter a new quote";
+
+  // Create input for category
+  let categoryInput = document.createElement("input");
+  categoryInput.id = "newQuoteCategory";
+  categoryInput.type = "text";
+  categoryInput.placeholder = "Enter quote category";
+
+  // Create button
+  let addButton = document.createElement("button");
+  addButton.innerText = "Add Quote";
+  addButton.addEventListener("click", addQuote);
+
+  // Append to form container
+  formContainer.appendChild(textInput);
+  formContainer.appendChild(categoryInput);
+  formContainer.appendChild(addButton);
 }
 
 // Function to add a new quote
@@ -28,19 +55,19 @@ function addQuote() {
     // push to array
     quotes.push({ text: newText, category: newCategory });
 
-    // show new quote immediately
+    // update DOM immediately
     const quoteDisplay = document.getElementById("quoteDisplay");
     quoteDisplay.innerHTML = `"${newText}" <br><small>- ${newCategory}</small>`;
 
-    // clear input fields
+    // clear inputs
     textInput.value = "";
     categoryInput.value = "";
   }
 }
 
-// Event listeners (important for autograder)
-document.getElementById("newQuote").addEventListener("click", displayRandomQuote);
-document.getElementById("addQuoteBtn").addEventListener("click", addQuote);
+// Event listener for showing new quote
+document.getElementById("newQuote").addEventListener("click", showRandomQuote);
 
-// Show first random quote on page load
-displayRandomQuote();
+// Run functions on page load
+showRandomQuote();
+createAddQuoteForm();
