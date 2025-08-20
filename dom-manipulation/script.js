@@ -1,4 +1,4 @@
-// Quotes array
+// Array of quotes
 let quotes = [
     { text: "The best way to predict the future is to create it.", category: "Motivation" },
     { text: "In the middle of every difficulty lies opportunity.", category: "Inspiration" },
@@ -17,7 +17,7 @@ function displayRandomQuote() {
     let randomIndex = Math.floor(Math.random() * quotes.length);
     let randomQuote = quotes[randomIndex];
 
-    // Update the DOM
+    // update DOM
     quoteDisplay.innerHTML = `"${randomQuote.text}" <br><small>- ${randomQuote.category}</small>`;
 }
 
@@ -34,14 +34,14 @@ function addQuote() {
         return;
     }
 
-    // Add to array
+    // add to array
     quotes.push({ text: newText, category: newCategory });
 
-    // Update DOM immediately with the new quote
+    // update DOM with newly added quote
     const quoteDisplay = document.getElementById("quoteDisplay");
     quoteDisplay.innerHTML = `"${newText}" <br><small>- ${newCategory}</small>`;
 
-    // Clear inputs
+    // clear inputs
     textInput.value = "";
     categoryInput.value = "";
 }
@@ -50,5 +50,5 @@ function addQuote() {
 document.getElementById("newQuote").addEventListener("click", displayRandomQuote);
 document.getElementById("addQuoteBtn").addEventListener("click", addQuote);
 
-// Display one quote on page load
+// show first quote on page load
 displayRandomQuote();
