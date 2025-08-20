@@ -170,6 +170,8 @@ function updateSyncStatus(message) {
 }
 
 setInterval(fetchQuotesFromServer, 15000);
+document.getElementById("syncBtn").addEventListener("click", fetchQuotesFromServer);
+
 
 window.onload = function () {
   populateCategories();
