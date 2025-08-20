@@ -8,11 +8,17 @@
 <body>
   <h1>Dynamic Quote Generator</h1>
 
+  <!-- Category Filter -->
+  <label for="categoryFilter">Filter by category: </label>
+  <select id="categoryFilter" onchange="filterQuotes()">
+    <option value="all">All Categories</option>
+  </select>
+
   <!-- Quote display -->
   <div id="quoteDisplay"></div>
   <button id="newQuote">Show New Quote</button>
 
-  <!-- Form to add quotes (script builds the inputs here) -->
+  <!-- Form to add new quotes -->
   <div id="formContainer"></div>
 
   <!-- Import / Export -->
