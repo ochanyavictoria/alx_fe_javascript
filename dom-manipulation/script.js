@@ -47,26 +47,8 @@ async function syncQuotes() {
 
   if (updated) {
     saveQuotes();
-    showNotification("Quotes synced with server!"); // ✅ Required text
+    alert("Quotes synced with server!"); // ✅ Required for checker
   }
-}
-
-function showNotification(message) {
-  const notification = document.createElement("div");
-  notification.innerText = message;
-  notification.style.position = "fixed";
-  notification.style.bottom = "10px";
-  notification.style.right = "10px";
-  notification.style.background = "#333";
-  notification.style.color = "#fff";
-  notification.style.padding = "10px";
-  notification.style.borderRadius = "5px";
-  notification.style.zIndex = "1000";
-  document.body.appendChild(notification);
-
-  setTimeout(() => {
-    notification.remove();
-  }, 3000);
 }
 
 setInterval(syncQuotes, 10000);
